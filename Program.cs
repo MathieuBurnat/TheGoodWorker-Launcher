@@ -18,6 +18,8 @@ namespace TheGoodWorker_Launcher
                 Console.WriteLine("{0} ; {1}", d.Key, d.Value);
             }
 
+
+
             //Foreach configuration's items
 
             //If item is a application
