@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.Collections;
 
 namespace TheGoodWorker_Launcher
 {
@@ -8,13 +9,14 @@ namespace TheGoodWorker_Launcher
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
             //Get a items list from the configuration file
-            string ssAttr;
-            ssAttr = ConfigurationManager.AppSettings.Get("data");
+            Hashtable applicationList = (Hashtable)ConfigurationManager.GetSection("items/applications");
 
-            Console.WriteLine("My Data : " + ssAttr);
+            //Display the application list
+            foreach (DictionaryEntry d in applicationList)
+            {
+                Console.WriteLine("{0} ; {1}", d.Key, d.Value);
+            }
 
             //Foreach configuration's items
 
