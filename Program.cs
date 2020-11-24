@@ -9,24 +9,27 @@ namespace TheGoodWorker_Launcher
     {
         static void Main(string[] args)
         {
-            //Get a items list from the configuration file
+            //Get a application list from the configuration file
             Hashtable applicationList = (Hashtable)ConfigurationManager.GetSection("items/applications");
 
             //Display the application list
+            Console.WriteLine("Display application list");
             foreach (DictionaryEntry d in applicationList)
             {
-                Console.WriteLine("{0} ; {1}", d.Key, d.Value);
+                Console.WriteLine("{0} : {1}", d.Key, d.Value);
+                // -> Execute the application
             }
 
+            //Get a urls list from the configuration file
+            Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
 
-
-            //Foreach configuration's items
-
-            //If item is a application
-            // --> Execute it
-
-            //If item is a url
-            // --> Browse it
+            //Display the application list
+            Console.WriteLine("Display url list");
+            foreach (DictionaryEntry d in urlList)
+            {
+                Console.WriteLine("{0} : {1}", d.Key, d.Value);
+                // -> Browse the url
+            }
 
             Console.ReadKey();
         }
