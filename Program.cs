@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Collections;
+using System.Diagnostics;
 
 namespace TheGoodWorker_Launcher
 {
@@ -14,10 +15,17 @@ namespace TheGoodWorker_Launcher
 
             //Display the application list
             Console.WriteLine("Display application list");
-            foreach (DictionaryEntry d in applicationList)
+            foreach (DictionaryEntry a in    applicationList)
             {
-                Console.WriteLine("{0} : {1}", d.Key, d.Value);
+                Console.WriteLine("{0} : {1}", a.Key, a.Value);
                 // -> Execute the application
+                Console.WriteLine("Launching {0}...", a.Key);
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo((string)a.Value)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
             }
 
             //Get a urls list from the configuration file
@@ -25,12 +33,13 @@ namespace TheGoodWorker_Launcher
 
             //Display the application list
             Console.WriteLine("Display url list");
-            foreach (DictionaryEntry d in urlList)
+            foreach (DictionaryEntry u in urlList)
             {
-                Console.WriteLine("{0} : {1}", d.Key, d.Value);
+                Console.WriteLine("{0} : {1}", u.Key, u.Value);
                 // -> Browse the url
-            }
 
+                
+            }
             Console.ReadKey();
         }
     }
