@@ -37,10 +37,13 @@ namespace TheGoodWorker_Launcher
             {
                 Console.WriteLine("{0} : {1}", u.Key, u.Value);
                 // -> Browse the url
+                Console.WriteLine("Launching {0}...", u.Key);
 
-                
+                Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", (string)u.Value);
             }
+
+            Console.WriteLine("Done ! :D");
             Console.ReadKey();
         }
     }
-}
+}             
