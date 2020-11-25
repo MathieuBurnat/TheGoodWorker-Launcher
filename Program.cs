@@ -17,7 +17,8 @@ namespace TheGoodWorker_Launcher
 
             //Set configuration varaibles
             bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
-            
+            string browser_path = configuration["browser_path"].ToString();
+
             //Display the application list
             Console.WriteLine("Display application list");
             foreach (DictionaryEntry a in applicationList)
@@ -41,7 +42,7 @@ namespace TheGoodWorker_Launcher
                 // -> Browse the url
                 Console.WriteLine("Launching {0}...", u.Key);
 
-                Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", (string)u.Value);
+                Process.Start(browser_path, (string)u.Value);
             }
 
             Console.WriteLine(configuration["should_automatically_close"]);
