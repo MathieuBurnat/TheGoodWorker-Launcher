@@ -10,12 +10,17 @@ namespace TheGoodWorker_Launcher
     {
         static void Main(string[] args)
         {
-            //Get a application list from the configuration file
+            //Get hastable lists
+            Hashtable configuration = (Hashtable)ConfigurationManager.GetSection("items/applicationConfiguration");
             Hashtable applicationList = (Hashtable)ConfigurationManager.GetSection("items/applications");
+            Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
 
+            //Set configuration varaibles
+            bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
+            
             //Display the application list
             Console.WriteLine("Display application list");
-            foreach (DictionaryEntry a in    applicationList)
+            foreach (DictionaryEntry a in applicationList)
             {
                 Console.WriteLine("{0} : {1}", a.Key, a.Value);
                 // -> Execute the application
@@ -28,9 +33,6 @@ namespace TheGoodWorker_Launcher
                 p.Start();
             }
 
-            //Get a urls list from the configuration file
-            Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
-
             //Display the application list
             Console.WriteLine("Display url list");
             foreach (DictionaryEntry u in urlList)
@@ -42,8 +44,21 @@ namespace TheGoodWorker_Launcher
                 Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", (string)u.Value);
             }
 
+            Console.WriteLine(configuration["should_automatically_close"]);
             Console.WriteLine("Done ! :D");
-            Console.ReadKey();
+
+            if(!should_automatically_close)
+                Console.ReadKey();
+        }
+
+        private static bool StringToBool(string strB)
+        {
+            bool b;
+            if (bool.TryParse(strB, out b))
+                return b;
+
+            Console.WriteLine("[Error] Impossible to parse the value " + strB + ". You should to check the App.Config ! The variable 'should_automatically_close' is set to false in the meantime."); 
+            return false;
         }
     }
 }             
