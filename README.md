@@ -1,5 +1,4 @@
 # TheGoodWorker-Launcher
-
 ## Description
 I have to open a bunch of programs and urls **each morning** at my teleworking days.
 So, i want a simple command-line program that lunch my differents things when i execute it.
@@ -11,12 +10,12 @@ So, i want a simple command-line program that lunch my differents things when i 
 - [ ] Command line program
     - [ ] Primitif code color 
         - Example : Errors in red, nice info in blue / green
-- [ ] Configuration file
+- [x] Configuration file
     - [x] It's possible to manually add a new program
         - Example : - Discord : **C:/.../Discord.exe**
     - [x] It's possible to manually add URL that'll be execute into a browser
         - Example : myurl : **wwww.myUrl.com**
-    - [ ] Option : Automatically-close
+    - [x] Option : Automatically-close
         - If is set on true, close the windows
 - [ ] Easy to install
     - [ ] Get Started
