@@ -7,8 +7,8 @@ So, i want a simple command-line program that lunch my differents things when i 
 - [x] The program is able to :
     - [x] Execute wished application's list
     - [x] Browse wished url's list
-- [ ] Command line program
-    - [ ] Primitif code color 
+- [x] Command line program
+    - [x] Primitif code color 
         - Example : Errors in red, nice info in blue / green
 - [x] Configuration file
     - [x] It's possible to manually add a new program
