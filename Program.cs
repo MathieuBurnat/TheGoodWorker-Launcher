@@ -51,7 +51,7 @@ namespace TheGoodWorker_Launcher
                 messanger.ColoredMessage("--> " + u.Key, Messanger.Type.Normal);
             
             //Browse URL
-            messanger.ColoredMessage("Run applications", Messanger.Type.Title);
+            messanger.ColoredMessage("Browse URL", Messanger.Type.Title);
             foreach (DictionaryEntry u in urlList)
             {
                 messanger.ColoredMessage("Browsing " + u.Key + "...", Messanger.Type.Normal);
