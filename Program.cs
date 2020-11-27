@@ -66,11 +66,15 @@ namespace TheGoodWorker_Launcher
 
         private static bool StringToBool(string strB)
         {
+
             bool b;
             if (bool.TryParse(strB, out b))
                 return b;
+            else{
+                Messanger messager = new Messanger();
+                messager.ColoredMessage("Impossible to parse the value '" + strB + "'. You should check the App.Config : The variable 'should_automatically_close' is set to false in the meantime.", Messanger.Type.Error);
+            }
 
-            Console.WriteLine("[Error] Impossible to parse the value " + strB + ". You should to check the App.Config ! The variable 'should_automatically_close' is set to false in the meantime."); 
             return false;
         }
     }
