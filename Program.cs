@@ -18,9 +18,18 @@ namespace TheGoodWorker_Launcher
             //Set configuration varaibles
             bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
             string browser_path = configuration["browser_path"].ToString();
+            Messanger messager = new Messanger();
+
+            //Tests
+            messager.ColoredMessage("This is my title ;D", Messanger.Type.Title);
+            messager.ColoredMessage("Error Error !", Messanger.Type.Error);
+            messager.ColoredMessage("My normal text", Messanger.Type.Normal);
+
+
 
             //Display the application list
-            Console.WriteLine("Display application list");
+
+            messager.ColoredMessage("Display applications", Messanger.Type.Title);
             foreach (DictionaryEntry a in applicationList)
             {
                 Console.WriteLine("{0} : {1}", a.Key, a.Value);
