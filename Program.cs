@@ -20,21 +20,17 @@ namespace TheGoodWorker_Launcher
             string browser_path = configuration["browser_path"].ToString();
             Messanger messager = new Messanger();
 
-            //Tests
-            messager.ColoredMessage("This is my title ;D", Messanger.Type.Title);
-            messager.ColoredMessage("Error Error !", Messanger.Type.Error);
-            messager.ColoredMessage("My normal text", Messanger.Type.Normal);
+            //Displays differents applications
+            messager.ColoredMessage("Displays applications", Messanger.Type.Title);
+            foreach (DictionaryEntry a in applicationList)
+                messager.ColoredMessage("--> " + a.Key, Messanger.Type.Normal);
 
-
-
-            //Display the application list
-
-            messager.ColoredMessage("Display applications", Messanger.Type.Title);
+            //Run applications
+            messager.ColoredMessage("Run applications", Messanger.Type.Title);
             foreach (DictionaryEntry a in applicationList)
             {
-                Console.WriteLine("{0} : {1}", a.Key, a.Value);
-                // -> Execute the application
-                Console.WriteLine("Launching {0}...", a.Key);
+                messager.ColoredMessage("Running " + a.Key + "...", Messanger.Type.Normal);
+
                 var p = new Process();
                 p.StartInfo = new ProcessStartInfo((string)a.Value)
                 {
@@ -43,21 +39,22 @@ namespace TheGoodWorker_Launcher
                 p.Start();
             }
 
-            //Display the application list
-            Console.WriteLine("Display url list");
+            //Displays differents applications
+            messager.ColoredMessage("Displays URL", Messanger.Type.Title);
+            foreach (DictionaryEntry u in urlList)
+                messager.ColoredMessage("--> " + u.Key, Messanger.Type.Normal);
+            
+            //Browse URL
+            messager.ColoredMessage("Run applications", Messanger.Type.Title);
             foreach (DictionaryEntry u in urlList)
             {
-                Console.WriteLine("{0} : {1}", u.Key, u.Value);
-                // -> Browse the url
-                Console.WriteLine("Launching {0}...", u.Key);
-
+                messager.ColoredMessage("Browsing " + u.Key + "...", Messanger.Type.Normal);
                 Process.Start(browser_path, (string)u.Value);
             }
 
-            Console.WriteLine(configuration["should_automatically_close"]);
-            Console.WriteLine("Done ! :D");
+            messager.ColoredMessage("Completed", Messanger.Type.Title);
 
-            if(!should_automatically_close)
+            if (!should_automatically_close)
                 Console.ReadKey();
         }
 
