@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Collections.Specialized;
 using System.Collections;
 using System.Diagnostics;
+using System.IO;
 
 namespace TheGoodWorker_Launcher
 {
@@ -31,12 +32,17 @@ namespace TheGoodWorker_Launcher
             {
                 messager.ColoredMessage("Running " + a.Key + "...", Messanger.Type.Normal);
 
-                var p = new Process();
-                p.StartInfo = new ProcessStartInfo((string)a.Value)
+                if (File.Exists(a.Value.ToString()))
                 {
-                    UseShellExecute = true
-                };
-                p.Start();
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo((string)a.Value)
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
+                }
+                else
+                    messager.ColoredMessage("The file '" + a.Value + "' doesn't exist.", Messanger.Type.Error);
             }
 
             //Displays differents applications
