@@ -16,23 +16,23 @@ namespace TheGoodWorker_Launcher
             Hashtable applicationList = (Hashtable)ConfigurationManager.GetSection("items/applications");
             Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
 
-            //Set configuration varaibles
+            //Variables
             bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
             string browser_path = configuration["browser_path"].ToString();
-            Messanger messager = new Messanger();
+            Messanger messanger = new Messanger();
 
-            //Displays differents applications
-            messager.ColoredMessage("Displays applications", Messanger.Type.Title);
+            //Displays applications
+            messanger.ColoredMessage("Displays applications", Messanger.Type.Title);
             foreach (DictionaryEntry a in applicationList)
-                messager.ColoredMessage("--> " + a.Key, Messanger.Type.Normal);
+                messanger.ColoredMessage("--> " + a.Key, Messanger.Type.Normal);
 
             //Run applications
-            messager.ColoredMessage("Run applications", Messanger.Type.Title);
+            messanger.ColoredMessage("Run applications", Messanger.Type.Title);
             foreach (DictionaryEntry a in applicationList)
             {
-                messager.ColoredMessage("Running " + a.Key + "...", Messanger.Type.Normal);
+                messanger.ColoredMessage("Running " + a.Key + "...", Messanger.Type.Normal);
 
-                if (File.Exists(a.Value.ToString()))
+                if (File.Exists(a.Value.ToString())) //Check if file exists
                 {
                     var p = new Process();
                     p.StartInfo = new ProcessStartInfo((string)a.Value)
@@ -42,39 +42,37 @@ namespace TheGoodWorker_Launcher
                     p.Start();
                 }
                 else
-                    messager.ColoredMessage("The file '" + a.Value + "' doesn't exist.", Messanger.Type.Error);
+                    messanger.ColoredMessage("The file '" + a.Value + "' doesn't exist.", Messanger.Type.Error);
             }
 
-            //Displays differents applications
-            messager.ColoredMessage("Displays URL", Messanger.Type.Title);
+            //Displays URL
+            messanger.ColoredMessage("Displays URL", Messanger.Type.Title);
             foreach (DictionaryEntry u in urlList)
-                messager.ColoredMessage("--> " + u.Key, Messanger.Type.Normal);
+                messanger.ColoredMessage("--> " + u.Key, Messanger.Type.Normal);
             
             //Browse URL
-            messager.ColoredMessage("Run applications", Messanger.Type.Title);
+            messanger.ColoredMessage("Run applications", Messanger.Type.Title);
             foreach (DictionaryEntry u in urlList)
             {
-                messager.ColoredMessage("Browsing " + u.Key + "...", Messanger.Type.Normal);
+                messanger.ColoredMessage("Browsing " + u.Key + "...", Messanger.Type.Normal);
                 Process.Start(browser_path, (string)u.Value);
             }
 
-            messager.ColoredMessage("Completed", Messanger.Type.Title);
-
+            messanger.ColoredMessage("Completed", Messanger.Type.Title);
             if (!should_automatically_close)
                 Console.ReadKey();
         }
 
         private static bool StringToBool(string strB)
         {
-
             bool b;
+
             if (bool.TryParse(strB, out b))
                 return b;
             else{
-                Messanger messager = new Messanger();
-                messager.ColoredMessage("Impossible to parse the value '" + strB + "'. You should check the App.Config : The variable 'should_automatically_close' is set to false in the meantime.", Messanger.Type.Error);
+                Messanger messanger = new Messanger();
+                messanger.ColoredMessage("Impossible to parse the value '" + strB + "'. You should check the App.Config : The variable 'should_automatically_close' is set to false in the meantime.", Messanger.Type.Error);
             }
-
             return false;
         }
     }
