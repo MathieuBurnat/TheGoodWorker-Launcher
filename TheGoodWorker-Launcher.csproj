@@ -6,6 +6,16 @@
     <RootNamespace>TheGoodWorker_Launcher</RootNamespace>
     <Configurations>Debug;Release;Val</Configurations>
     <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>worker.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|AnyCPU'">
+    <OutputPath>bin\Val\test\</OutputPath>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
