@@ -9,7 +9,7 @@ So, i want a simple command-line program that lunch my differents things when i 
     - [x] Browse wished url's list
 - [x] Command line program
     - [x] Primitif code color 
-        - Example : Errors in red, nice info in blue / green
+    - [X] Understandable for a user
 - [x] Configuration file
     - [x] It's possible to manually add a new program
         - Example : - Discord : **C:/.../Discord.exe**
@@ -17,14 +17,16 @@ So, i want a simple command-line program that lunch my differents things when i 
         - Example : myurl : **wwww.myUrl.com**
     - [x] Option : Automatically-close
         - If is set on true, close the windows
-- [ ] Easy to install
-    - [ ] Get Started
+- [x] Easy to install
+    - [x] Get Started
 
-## Get Started (future)
-- Download the last version of the .exe,
-- Add your bunch of applications / urls into the *Application.config* while following the examples.
-- Execute the programm
-- Have fun !
+## Get Started
+- Download the last version [here](https://github.com/MathieuBurnat/TheGoodWorker-Launcher/tree/dev/installer).
+    - *Unzip the application whatever you want.*
+- Open the file **TheGoodWorker-Launcher.dll.config**.
+    - *Configure-it like the examples.*
+    - *If you panic, keep calm and read comments*
+- Save and Enjoy  !
 
 ## Author
 Created by Mathieu Burnat ! :D
