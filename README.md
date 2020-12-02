@@ -35,12 +35,8 @@ All versions are available [here](https://github.com/MathieuBurnat/TheGoodWorker
 ### Beta 1.0 (02.12.20)
 - This is the first version of the application !
 - Respects the goal's section.
-*Actually in test [...].*
 
-
-
-
-
+*Actually in test, more informations will come later [...].*
 
 ## Author
 Created by Mathieu Burnat ! :D
