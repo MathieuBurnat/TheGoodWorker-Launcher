@@ -7,6 +7,7 @@
     <Configurations>Debug;Release;Val</Configurations>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>worker.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|AnyCPU'">
@@ -16,6 +17,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|x64'">
+    <OutputPath>installer\alpha\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
