@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Collections.Specialized;
 using System.Collections;
 using System.Diagnostics;
 using System.IO;
