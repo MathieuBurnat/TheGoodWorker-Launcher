@@ -16,7 +16,7 @@ namespace TheGoodWorker_Launcher
             Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
 
             //Variables
-            bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
+            bool should_automatically_close = StringToBool(configuration["automatically_close_terminal"].ToString());
             string browser_path = configuration["browser_path"].ToString();
             Messanger messanger = new Messanger();
 
@@ -59,7 +59,10 @@ namespace TheGoodWorker_Launcher
 
             messanger.ColoredMessage("Completed", Messanger.Type.Title);
             if (!should_automatically_close)
+            {
+                messanger.ColoredMessage("Press a key to exit the program...", Messanger.Type.Normal);
                 Console.ReadKey();
+            }
         }
 
         private static bool StringToBool(string strB)

@@ -15,11 +15,11 @@ namespace TheGoodWorker_Launcher
             {
                 case Type.Error: //Write error with red color
                     Console.ForegroundColor = error;
-                    Console.WriteLine("[Error] {0}", message);
+                    Console.WriteLine("\n[Error] {0}\n", message);
                     break;
                 case Type.Title: //Write title
                     Console.ForegroundColor = title;
-                    Console.WriteLine("** [ {0} ] **", message);
+                    Console.WriteLine("\n\n** [ {0} ] **\n", message);
                     break;
                 case Type.Normal: //Normal Text
                     Console.ForegroundColor = normal;
