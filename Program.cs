@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Configuration;
-using System.Collections.Specialized;
 using System.Collections;
 using System.Diagnostics;
+using System.IO;
+
 
 namespace TheGoodWorker_Launcher
 {
@@ -15,50 +16,67 @@ namespace TheGoodWorker_Launcher
             Hashtable applicationList = (Hashtable)ConfigurationManager.GetSection("items/applications");
             Hashtable urlList = (Hashtable)ConfigurationManager.GetSection("items/urls");
 
-            //Set configuration varaibles
-            bool should_automatically_close = StringToBool(configuration["should_automatically_close"].ToString());
+            //Variables
+            bool should_automatically_close = StringToBool(configuration["automatically_close_terminal"].ToString());
             string browser_path = configuration["browser_path"].ToString();
+            Messanger messanger = new Messanger();
 
-            //Display the application list
-            Console.WriteLine("Display application list");
+            //Displays applications
+            messanger.ColoredMessage("Displays applications", Messanger.Type.Title);
+            foreach (DictionaryEntry a in applicationList)
+                messanger.ColoredMessage("--> " + a.Key, Messanger.Type.Normal);
+
+            //Run applications
+            messanger.ColoredMessage("Run applications", Messanger.Type.Title);
             foreach (DictionaryEntry a in applicationList)
             {
-                Console.WriteLine("{0} : {1}", a.Key, a.Value);
-                // -> Execute the application
-                Console.WriteLine("Launching {0}...", a.Key);
-                var p = new Process();
-                p.StartInfo = new ProcessStartInfo((string)a.Value)
+                messanger.ColoredMessage("Running " + a.Key + "...", Messanger.Type.Normal);
+
+                if (File.Exists(a.Value.ToString())) //Check if file exists
                 {
-                    UseShellExecute = true
-                };
-                p.Start();
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo((string)a.Value)
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
+                }
+                else
+                    messanger.ColoredMessage("The file '" + a.Value + "' doesn't exist.", Messanger.Type.Error);
             }
 
-            //Display the application list
-            Console.WriteLine("Display url list");
+            //Displays URL
+            messanger.ColoredMessage("Displays URL", Messanger.Type.Title);
+            foreach (DictionaryEntry u in urlList)
+                messanger.ColoredMessage("--> " + u.Key, Messanger.Type.Normal);
+            
+            //Browse URL
+            messanger.ColoredMessage("Browse URL", Messanger.Type.Title);
             foreach (DictionaryEntry u in urlList)
             {
-                Console.WriteLine("{0} : {1}", u.Key, u.Value);
-                // -> Browse the url
-                Console.WriteLine("Launching {0}...", u.Key);
-
+                messanger.ColoredMessage("Browsing " + u.Key + "...", Messanger.Type.Normal);
                 Process.Start(browser_path, (string)u.Value);
             }
 
-            Console.WriteLine(configuration["should_automatically_close"]);
-            Console.WriteLine("Done ! :D");
-
-            if(!should_automatically_close)
+            messanger.ColoredMessage("Completed", Messanger.Type.Title);
+            if (!should_automatically_close)
+            {
+                messanger.ColoredMessage("Press a key to exit the program...", Messanger.Type.Normal);
                 Console.ReadKey();
+            }
         }
 
         private static bool StringToBool(string strB)
         {
             bool b;
+
             if (bool.TryParse(strB, out b))
                 return b;
+            else{
+                Messanger messanger = new Messanger();
+                messanger.ColoredMessage("Impossible to parse the value '" + strB + "'. You should check the App.Config : The variable 'should_automatically_close' is set to false in the meantime.", Messanger.Type.Error);
+            }
 
-            Console.WriteLine("[Error] Impossible to parse the value " + strB + ". You should to check the App.Config ! The variable 'should_automatically_close' is set to false in the meantime."); 
             return false;
         }
     }

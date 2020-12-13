@@ -6,8 +6,22 @@
     <RootNamespace>TheGoodWorker_Launcher</RootNamespace>
     <Configurations>Debug;Release;Val</Configurations>
     <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>worker.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|AnyCPU'">
+    <OutputPath>bin\Val\test\</OutputPath>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|x64'">
+    <OutputPath>installer\alpha\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
