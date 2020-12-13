@@ -18,9 +18,38 @@ So, i want a simple button that lunch my different things when i execute it.
     - *Unzip the document whatever you want.*
 - Open the file **TheGoodWorker-Launcher.dll.config**.
     - *Configure-it like the examples.*
-    - *If you panic, keep calm and read comments*
+    - *If you panic, keep calm and read comments or see examples below*
 - Save and Enjoy  !
     - *oh. You just need to click on the .exe's file 0:).
+### Configuration's examples
+
+You need to go inside the configuration file *TheGoodWorker-Launcher.dll.config* to do that.
+
+#### If you want add an application :
+Go inside the *application* section and add a line : 
+
+```xml
+    <applications>
+      <add key="discord" value="C:\Users\MyUser\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk" />
+    </applications>
+```
+The **Key** value is the name of the application. It will be used when the interface shows graphical messages.
+
+The **value** is the path of the application. You may have nocticed that the example links an *.Ink*, it's because the application supports .ink execution. 
+
+It could be interesting to launch the .Ink of the application and not the .exe because the .Ink might launch the .exe with special parameters.
+#### If you want add a url :
+Go inside the *urls* section and add a line : 
+
+```xml
+    <urls>
+      <!-- Add your URLs to browse here ! -->
+      <add key="KhanAcademia" value="https://fr.khanacademy.org/" />
+    </urls>
+```
+The **Key** value is the name of the website. It will be used when the interface shows graphical messages.
+
+The **value** is the url that you want to automatically launch.
 
 ## Versions 
 All versions are available [here](https://github.com/MathieuBurnat/TheGoodWorker-Launcher/tree/dev/installer).
