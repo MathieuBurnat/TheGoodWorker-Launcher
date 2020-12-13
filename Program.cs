@@ -4,6 +4,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.IO;
 
+
 namespace TheGoodWorker_Launcher
 {
     class Program
@@ -75,8 +76,8 @@ namespace TheGoodWorker_Launcher
                 Messanger messanger = new Messanger();
                 messanger.ColoredMessage("Impossible to parse the value '" + strB + "'. You should check the App.Config : The variable 'should_automatically_close' is set to false in the meantime.", Messanger.Type.Error);
             }
+
             return false;
         }
     }
 }             
-

@@ -1,6 +1,7 @@
 # TheGoodWorker-Launcher
 ## Description
 I have to open a bunch of programs and urls **each morning** at my teleworking days.
+
 So, i want a simple button that lunch my different things when i execute it.
 
 ## Goals

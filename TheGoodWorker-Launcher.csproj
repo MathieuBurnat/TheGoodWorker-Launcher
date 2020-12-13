@@ -22,7 +22,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Val|x64'">
     <OutputPath>installer\alpha\</OutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
