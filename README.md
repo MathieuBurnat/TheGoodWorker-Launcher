@@ -25,7 +25,7 @@ So, i want a simple button that lunch my different things when i execute it.
 
 You need to go inside the configuration file *TheGoodWorker-Launcher.dll.config* to do that.
 
-#### If you want add an application :
+#### If you want to add an application :
 Go inside the *application* section and add a line : 
 
 ```xml
@@ -38,7 +38,7 @@ The **Key** value is the name of the application. It will be used when the inter
 The **value** is the path of the application. You may have nocticed that the example links an *.Ink*, it's because the application supports .ink execution. 
 
 It could be interesting to launch the .Ink of the application and not the .exe because the .Ink might launch the .exe with special parameters.
-#### If you want add a url :
+#### If you want to add a url :
 Go inside the *urls* section and add a line : 
 
 ```xml
@@ -56,9 +56,9 @@ All versions are available [here](https://github.com/MathieuBurnat/TheGoodWorker
 
 ### Beta 1.0 (02.12.20)
 - This is the first version of the application !
-- Respects the goal's section.
+- It respects the goal's section.
 
-*Actually in test, more informations will come later [...].*
+*Actually in test, more informations will come later [...]*
 
 ## Author
 Created by Mathieu Burnat ! :D
